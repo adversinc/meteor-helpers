@@ -1,0 +1,32 @@
+{
+  "name": "@advers/meteor-helpers",
+  "version": "1.0.0",
+  "description": "Standard advers meteor helpers",
+  "main": "lib/index.js",
+  "repository": "https://github.com/adversinc/meteor-helpers.git",
+  "author": "Glaznah Gassner <dinofabrello@slbiz2life.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "babel -d lib/ src/",
+    "prepare": "npm run build",
+    "test": "npm run build && mocha"
+  },
+  "publishConfig": {
+    "registry": "https://npm.metabizlist.com"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "mocha": "^6.2.0",
+    "mocha-logger": "^1.0.6",
+    "nyc": "^14.1.1",
+    "source-map-support": "^0.5.12"
+  },
+  "dependencies": {
+    "@advers/moment-SLT": "^1.0.2",
+    "@advers/secondlife-tools": "^1.2.1"
+  }
+}
