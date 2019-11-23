@@ -1,6 +1,6 @@
 {
   "name": "@advers/meteor-helpers",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Standard advers meteor helpers",
   "main": "lib/index.js",
   "repository": "https://github.com/adversinc/meteor-helpers.git",
