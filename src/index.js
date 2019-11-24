@@ -49,6 +49,14 @@ Template.registerHelper('pageState', function(v) {
 	return Template.instance().pageState.get(v);
 });
 
+/**
+ * Concatenates arguments into a string
+ * @function conCat
+ */
+Template.registerHelper('conCat', function(...args) {
+	return args.slice(0, args.length-1).join("");
+});
+
 
 Template.registerHelper('slname2str', function(slname) {
 	if(typeof slname == "object") { slname = slname.slname; }
