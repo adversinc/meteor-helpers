@@ -95,7 +95,7 @@ Template.registerHelper('formatLS', function(amount) {
 		return "L$0";
 	}
 	const amountAbs = Math.abs(amount);
-	const str = amountAbs.toFixed(0).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+	const str = amountAbs.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, '$&,');
 	return (amount<0)? `-L$${str}`: `L$${str}`;
 });
 
