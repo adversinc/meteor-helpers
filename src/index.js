@@ -116,5 +116,5 @@ Template.registerHelper('location2slurl', function(location) {
 	if(!location) { return "#"; }
 
 	location = location.replace(/ /g, "%20");
-	return "https://map.secondlife.com/secondlife/" + location;
+	return "https://maps.secondlife.com/secondlife/" + location;
 });
