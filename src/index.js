@@ -44,9 +44,16 @@ Template.registerHelper('Session', function(v, p) {
  * in onCreated.
  * @function pageState
  * @param {String} v - the field of the pageState
+ * @param {string} [p] - if specified, then specific value is taken from pageState var
  */
-Template.registerHelper('pageState', function(v) {
-	return Template.instance().pageState.get(v);
+Template.registerHelper('pageState', function(v, p) {
+	if(typeof(p) !== "string") {
+		return Template.instance().pageState.get(v);
+	} else {
+		let d = Template.instance().pageState.get(v);
+		if(d) { return d[p]; }
+		else { return null; }
+	}
 });
 
 /**
