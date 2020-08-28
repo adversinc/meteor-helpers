@@ -1,6 +1,6 @@
 {
   "name": "@advers/meteor-helpers",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Standard advers meteor helpers",
   "main": "lib/index.js",
   "repository": "https://github.com/adversinc/meteor-helpers.git",
@@ -16,17 +16,17 @@
     "registry": "https://npm.metabizlist.com"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
     "babel-plugin-add-module-exports": "^1.0.2",
-    "mocha": "^6.2.0",
+    "mocha": "^8.1.2",
     "mocha-logger": "^1.0.6",
-    "nyc": "^14.1.1",
-    "source-map-support": "^0.5.12"
+    "nyc": "^15.1.0",
+    "source-map-support": "^0.5.19"
   },
   "dependencies": {
     "@advers/moment-SLT": "^1.0.2",
-    "@advers/secondlife-tools": "^1.2.1"
+    "@advers/secondlife-tools": "^1.2.3"
   }
 }
