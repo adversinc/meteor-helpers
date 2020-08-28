@@ -43,10 +43,15 @@ Template.registerHelper('Session', function(v, p) {
  * Note: The template has to define the local ReactiveDict pageState variable
  * in onCreated.
  * @function pageState
- * @param {String} v - the field of the pageState
+ * @param {String} v - the field of the pageState. If "undefined", returns the whole
+ * collection var
  * @param {string} [p] - if specified, then specific value is taken from pageState var
  */
 Template.registerHelper('pageState', function(v, p) {
+	if(v === undefined) {
+		return Template.instance().pageState;
+	}
+
 	if(typeof(p) !== "string") {
 		return Template.instance().pageState.get(v);
 	} else {
