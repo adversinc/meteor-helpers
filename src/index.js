@@ -1,11 +1,18 @@
 import moment from '@advers/moment-SLT';
 import AvatarTools from "@advers/secondlife-tools";
 
+/**
+ * Formats Date object according to the 'format'.
+ *
+ * Possible values:
+ * - "date-time" for YYYY.MM.DD HH:mm
+ * - any moment.js valid format string
+ */
 Template.registerHelper('formatDateTime', function(date, format) {
 	let formatString = "YYYY.MM.DD";
 	if(format === "date-time") {
 		formatString = "YYYY.MM.DD HH:mm";
-	} else if(typeof(format) !== "undefined") {
+	} else if(typeof(format) == "string") {
 		formatString = format;
 	}
 
@@ -13,11 +20,19 @@ Template.registerHelper('formatDateTime', function(date, format) {
 });
 
 
+/**
+ * Formats Date object according to the 'format', and converts it to SLT
+ * timezone.
+ *
+ * Possible values:
+ * - "date-time" for YYYY.MM.DD HH:mm
+ * - any moment.js valid format string
+ */
 Template.registerHelper('formatDateTimeSLT', function(date, format) {
 	let formatString = "YYYY.MM.DD";
 	if(format === "date-time") {
 		formatString = "YYYY.MM.DD HH:mm";
-	} else if(typeof(format) !== "undefined") {
+	} else if(typeof(format) == "string") {
 		formatString = format;
 	}
 
