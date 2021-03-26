@@ -3,8 +3,10 @@ import AvatarTools from "@advers/secondlife-tools";
 
 Template.registerHelper('formatDateTime', function(date, format) {
 	let formatString = "YYYY.MM.DD";
-	if(format == "date-time") {
+	if(format === "date-time") {
 		formatString = "YYYY.MM.DD HH:mm";
+	} else if(typeof(format) !== "undefined") {
+		formatString = format;
 	}
 
 	return moment(date).format(formatString);
@@ -13,8 +15,10 @@ Template.registerHelper('formatDateTime', function(date, format) {
 
 Template.registerHelper('formatDateTimeSLT', function(date, format) {
 	let formatString = "YYYY.MM.DD";
-	if(format == "date-time") {
+	if(format === "date-time") {
 		formatString = "YYYY.MM.DD HH:mm";
+	} else if(typeof(format) !== "undefined") {
+		formatString = format;
 	}
 
 	return moment.tz(date, "America/Los_Angeles").format(formatString);
