@@ -90,6 +90,7 @@ Template.registerHelper('conCat', function(...args) {
 
 
 Template.registerHelper('slname2str', function(slname) {
+	if(slname == null) { return ""; }
 	if(typeof slname == "object") { slname = slname.slname; }
 
 	if(typeof slname != "string") { return ""; }
