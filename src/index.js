@@ -116,7 +116,15 @@ Template.registerHelper('period2str', function(date) {
 });
 
 Template.registerHelper('slname2snake', function(slname) {
-	if(typeof slname == "object") { slname = slname.slname; }
+	if(slname == null) { return ""; }
+
+	if(typeof slname == "object") {
+		if(slname in slname) {
+			slname = slname.slname;
+		} else {
+			return "";
+		}
+	}
 
 	if(typeof slname != "string") { return ""; }
 	return AvatarTools.slname2str(slname).toLowerCase().replace(" ", "_");
