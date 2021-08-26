@@ -16,17 +16,17 @@
     "registry": "https://npm.metabizlist.com"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.11.4",
-    "@babel/preset-env": "^7.11.0",
-    "babel-plugin-add-module-exports": "^1.0.2",
-    "mocha": "^8.1.2",
-    "mocha-logger": "^1.0.6",
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "mocha": "^9.1.0",
+    "mocha-logger": "^1.0.7",
     "nyc": "^15.1.0",
     "source-map-support": "^0.5.19"
   },
   "dependencies": {
-    "@advers/moment-SLT": "^1.0.2",
-    "@advers/secondlife-tools": "^1.2.3"
+    "@advers/moment-SLT": "^2.0.0",
+    "@advers/secondlife-tools": "^2.0.3"
   }
 }
