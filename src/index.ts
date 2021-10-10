@@ -1,5 +1,23 @@
-import moment from '@advers/moment-SLT';
+import dayjs from '@advers/moment-SLT';
 import AvatarTools from "@advers/secondlife-tools";
+
+import timezone from 'dayjs/plugin/timezone';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+declare var Template: any;
+declare var Session: any;
+
+// For testing routines
+if(typeof(Template) === "undefined") {
+	console.log("created");
+	var Template: any = {
+		registerHelper(name, func) {
+			Template[name] = func;
+		}
+	}
+
+	module.exports = Template;
+}
 
 /**
  * Formats Date object according to the 'format'.
@@ -16,7 +34,7 @@ Template.registerHelper('formatDateTime', function(date, format) {
 		formatString = format;
 	}
 
-	return moment(date).format(formatString);
+	return dayjs(date).format(formatString);
 });
 
 
@@ -36,7 +54,7 @@ Template.registerHelper('formatDateTimeSLT', function(date, format) {
 		formatString = format;
 	}
 
-	return moment.tz(date, "America/Los_Angeles").format(formatString);
+	return dayjs.tz(date, "America/Los_Angeles").format(formatString);
 });
 
 /**
@@ -112,7 +130,7 @@ Template.registerHelper('uuid2str', function(uuid) {
  * @param {Date} date - the date to calculate till
  */
 Template.registerHelper('period2str', function(date) {
-	return moment().to(moment(date), true);
+	return dayjs().to(dayjs(date), true);
 });
 
 Template.registerHelper('slname2snake', function(slname) {
@@ -133,6 +151,7 @@ Template.registerHelper('slname2snake', function(slname) {
 /**
  * Formats money number, printing it as L$XXX,XXX
  */
+//@ts-ignore
 Number.prototype.format = function(n, x) {
 	const re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
 	return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
