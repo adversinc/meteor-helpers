@@ -4,12 +4,13 @@ import AvatarTools from "@advers/secondlife-tools";
 import timezone from 'dayjs/plugin/timezone';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
-declare var Template: any;
-declare var Session: any;
+dayjs.extend(relativeTime);
 
 // For testing routines
-if(typeof(Template) === "undefined") {
-	console.log("created");
+declare var Template: any;
+declare var Session: any;
+if(process.env["DEV_INIT_TEMPLATE"]) {
+	console.log("Template created");
 	var Template: any = {
 		registerHelper(name, func) {
 			Template[name] = func;

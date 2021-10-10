@@ -1,4 +1,6 @@
 process.env["NODE_ENV"] = "development";
+process.env["DEV_INIT_TEMPLATE"] = "1";
+
 const
 	assert = require('assert');
 
@@ -40,4 +42,16 @@ describe('formatDateTimeSLT', function() {
 		assert.equal(slt.date, shouldBeDate);
 	});
 
+});
+
+describe('period2str', function() {
+	it('should return zero difference with now', function() {
+		const now = new Date();
+		const diff = Template.period2str(now);
+
+		console.log(diff);
+
+		// Check if components of the date are correct
+		assert.equal(diff, "a few seconds");
+	});
 });
