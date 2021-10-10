@@ -6,6 +6,8 @@ const
 
 // Libs to test
 const Template = require("../lib/index");
+const daySLT = require("@advers/moment-SLT").default;
+const dayjs = require("dayjs");
 
 function str2date(str) {
 	const m = str.match(/^(\d+)\.(\d+)\.(\d+) (\d+):(\d+):(\d+)$/);
@@ -45,7 +47,15 @@ describe('formatDateTimeSLT', function() {
 });
 
 describe('period2str', function() {
-	it('should return zero difference with now', function() {
+	it('should return zero difference with Los_Angeles', function() {
+		const nowLA = daySLT(new Date(), "America/Los_Angeles");
+		const diff = Template.period2str(nowLA);
+
+		// Check if components of the date are correct
+		assert.equal(diff, "a few seconds");
+	});
+
+	it('should return zero difference with timezoned now', function() {
 		const now = new Date();
 		const diff = Template.period2str(now);
 
@@ -53,5 +63,20 @@ describe('period2str', function() {
 
 		// Check if components of the date are correct
 		assert.equal(diff, "a few seconds");
+	});
+
+	it('should return actual difference with date with no timezone', function() {
+
+		const nowDate = new Date();
+		const now = daySLT(nowDate).format("YYYY-MM-DD HH:mm:ss");
+
+		console.log(`now str: ${now} => `, daySLT(now).toISOString());
+		const diff = Template.period2str(now);
+
+		console.log(now, diff);
+
+		// Check if components of the date are correct
+		// WARNING: Moscow<->Los Angeles time, fix for non-fixed tz!
+		assert.equal(diff, "10 hours");
 	});
 });

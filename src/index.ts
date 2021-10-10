@@ -1,9 +1,10 @@
-import dayjs from '@advers/moment-SLT';
-import AvatarTools from "@advers/secondlife-tools";
+import dayjs from "dayjs";
+import SLTools from "@advers/secondlife-tools";
 
 import timezone from 'dayjs/plugin/timezone';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
+dayjs.extend(timezone);
 dayjs.extend(relativeTime);
 
 // For testing routines
@@ -55,7 +56,7 @@ Template.registerHelper('formatDateTimeSLT', function(date, format) {
 		formatString = format;
 	}
 
-	return dayjs.tz(date, "America/Los_Angeles").format(formatString);
+	return SLTools.timeToSLT(date).format(formatString);
 });
 
 /**
@@ -113,7 +114,7 @@ Template.registerHelper('slname2str', function(slname) {
 	if(typeof slname == "object") { slname = slname.slname; }
 
 	if(typeof slname != "string") { return ""; }
-	return AvatarTools.slname2str(slname);
+	return SLTools.slname2str(slname);
 });
 
 Template.registerHelper('uuid2str', function(uuid) {
@@ -146,7 +147,7 @@ Template.registerHelper('slname2snake', function(slname) {
 	}
 
 	if(typeof slname != "string") { return ""; }
-	return AvatarTools.slname2str(slname).toLowerCase().replace(" ", "_");
+	return SLTools.slname2str(slname).toLowerCase().replace(" ", "_");
 });
 
 /**
