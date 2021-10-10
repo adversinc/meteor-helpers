@@ -11,7 +11,7 @@ declare var Template: any;
 declare var Session: any;
 if(process.env["DEV_INIT_TEMPLATE"]) {
 	console.log("Template created");
-	var Template: any = {
+	Template = {
 		registerHelper(name, func) {
 			Template[name] = func;
 		}

@@ -10,7 +10,7 @@
 		"allowJs": true,
 		"rootDir": "src/",
 
-		"strict": true,
+		"noImplicitUseStrict": true,
 		"strictPropertyInitialization": false,
 		"strictNullChecks": false,
 
