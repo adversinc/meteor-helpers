@@ -22,7 +22,48 @@ function str2date(str) {
 }
 
 // Tests
+describe('formatDateTime', function() {
+	it('should work for date-time', function() {
+		const now = new Date();
+		const actual = Template.formatDateTime(now, "date-time");
+		assert.equal(actual, dayjs(now).format("YYYY.MM.DD HH:mm"));
+	});
+
+	it('should work for date', function() {
+		const now = new Date();
+		const actual = Template.formatDateTime(now, "date");
+		assert.equal(actual, dayjs(now).format("YYYY.MM.DD"));
+	});
+
+	it('should work for custom format', function() {
+		const format = "YYYY/MM/DD HH.mm";
+		const now = new Date();
+		const actual = Template.formatDateTime(now, format);
+		assert.equal(actual, dayjs(now).format(format));
+	});
+});
+
+
 describe('formatDateTimeSLT', function() {
+	it('should work for date-time', function() {
+		const now = new Date();
+		const actual = Template.formatDateTimeSLT(now, "date-time");
+		assert.equal(actual, dayjs(now).tz("America/Los_Angeles").format("YYYY.MM.DD HH:mm"));
+	});
+
+	it('should work for date', function() {
+		const now = new Date();
+		const actual = Template.formatDateTimeSLT(now, "date");
+		assert.equal(actual, dayjs(now).tz("America/Los_Angeles").format("YYYY.MM.DD"));
+	});
+
+	it('should work for custom format', function() {
+		const format = "YYYY/MM/DD HH/mm";
+		const now = new Date();
+		const actual = Template.formatDateTimeSLT(now, format);
+		assert.equal(actual, dayjs(now).tz("America/Los_Angeles").format(format));
+	});
+
 	it('should return correct time in SL', function() {
 		const now = new Date();
 		const sltString = Template.formatDateTimeSLT(now, "YYYY.MM.DD HH:mm:ss");

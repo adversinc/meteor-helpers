@@ -28,12 +28,21 @@ if(process.env["DEV_INIT_TEMPLATE"]) {
  * - "date-time" for YYYY.MM.DD HH:mm
  * - any moment.js valid format string
  */
-Template.registerHelper('formatDateTime', function(date, format) {
+Template.registerHelper('formatDateTime', function(date, format: "date-time"|"date"|string) {
 	let formatString = "YYYY.MM.DD";
-	if(format === "date-time") {
-		formatString = "YYYY.MM.DD HH:mm";
-	} else if(typeof(format) == "string") {
-		formatString = format;
+	switch(format) {
+		case "date-time":
+			formatString = "YYYY.MM.DD HH:mm";
+			break;
+		case "date":
+			formatString = "YYYY.MM.DD";
+			break;
+		default:
+			// Protect from non-string format parameter
+			if(typeof (format) == "string") {
+				formatString = format;
+			}
+			break;
 	}
 
 	return dayjs(date).format(formatString);
@@ -48,12 +57,21 @@ Template.registerHelper('formatDateTime', function(date, format) {
  * - "date-time" for YYYY.MM.DD HH:mm
  * - any moment.js valid format string
  */
-Template.registerHelper('formatDateTimeSLT', function(date, format) {
+Template.registerHelper('formatDateTimeSLT', function(date, format: "date-time"|"date"|string) {
 	let formatString = "YYYY.MM.DD";
-	if(format === "date-time") {
-		formatString = "YYYY.MM.DD HH:mm";
-	} else if(typeof(format) == "string") {
-		formatString = format;
+	switch(format) {
+		case "date-time":
+			formatString = "YYYY.MM.DD HH:mm";
+			break;
+		case "date":
+			formatString = "YYYY.MM.DD";
+			break;
+		default:
+			// Protect from non-string format parameter
+			if(typeof (format) == "string") {
+				formatString = format;
+			}
+			break;
 	}
 
 	return SLTools.timeToSLT(date).format(formatString);
